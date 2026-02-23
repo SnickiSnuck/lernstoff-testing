@@ -1,0 +1,235 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Inter;
+  text-shadow: var(--text-shadow);
+  scroll-margin: 7rem;
+  scroll-behavior: smooth;
+  color: var(--text);
+}
+
+:root{
+  --primary: rgb(60, 60, 255);
+  --secondary: rgb(100, 100, 255);
+  --tertiary: rgb(140, 140, 255);
+  --header: black;
+  --text: rgb(25, 25, 25);
+  --glass-bg: rgba(255, 255, 255, .3);
+  --bg: rgba(240, 240, 240);
+  --bg-darker: rgba(220, 220, 220);
+  --border: 1px solid rgb(200, 200, 200);
+  --border-shadow: 0 0 .5rem rgb(200, 200, 200) inset;
+  --hover-bg: rgba(0, 0, 0, 0.1);
+  --shadow: 0 2.5px 5px rgba(0, 0, 0, .2);
+  --text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+}
+
+h1,h2,h3{color: var(--header);}
+h1{font-size: 2.5rem;}
+p{color: var(--text);}
+a{
+  text-decoration: none;
+  color: var(--primary);
+}
+
+a:hover{
+  color: var(--secondary);
+  text-decoration: underline;
+}
+
+a:active{opacity: .5;}
+
+
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--body-bg);
+}
+
+button{
+  color: white;
+  text-shadow: var(--text-shadow);
+  background: linear-gradient(var(--secondary), var(--primary));
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: .8rem;
+  border: 1px solid var(--secondary);
+  cursor: pointer;
+  transition: all 150ms;
+  box-shadow: 0px 1px 1px var(--tertiary) inset, 0 -1px 1px var(--tertiary) inset, 1px 0px 1px var(--tertiary) inset, -1px 0px 1px var(--tertiary) inset;
+}
+
+button:hover{
+  filter: brightness(1.2);
+}
+
+ul {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+nav{
+  z-index: 1000;
+  top: 1rem;
+  margin-bottom: 2rem;
+  position: sticky;
+  display: flex;
+  padding: .2rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(4px);
+  border-radius: 9999px;
+  border: var(--border);
+  box-shadow: var(--border-shadow), var(--shadow);
+}
+
+nav ul{
+  list-style-type: none;
+  display: flex;
+  gap: .2rem;
+}
+
+nav ul li a{
+  display: flex;
+  padding: 1rem;
+  color: black;
+  text-decoration: none;
+  transition: all 50ms;
+  border: 1px solid transparent;
+}
+
+nav ul li a:hover{
+  background: var(--hover-bg);
+  border-radius: 9999px;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-active{
+  color: white;
+  text-shadow: var(--text-shadow);
+  background: linear-gradient(var(--secondary), var(--primary));
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--secondary);
+  cursor: pointer;
+  transition: all 150ms;
+  box-shadow: 0px 1px 1px var(--tertiary) inset, 0 -1px 1px var(--tertiary) inset, 1px 0px 1px var(--tertiary) inset, -1px 0px 1px var(--tertiary) inset;
+}
+
+.nav-active:hover{
+  background: linear-gradient(var(--secondary), var(--primary));
+  cursor: default;
+  color: white;
+}
+
+.nav-active:active{
+  opacity: 1;
+}
+
+table{
+  table-layout: fixed;
+  width: 100%;
+  border: var(--border);
+  background: var(--bg-darker);
+  border-radius: .8rem;
+  user-select: none;
+}
+
+thead{
+  background: red;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+th, td{
+  transition: all 500ms;
+  padding: .5rem;
+}
+
+tr:nth-child(even){
+  background: var(--bg);
+}
+
+.content-row{
+  width: min(calc(100% - 2rem), 80rem);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.content-column{
+  width: min(calc(100% - 0rem), 55rem);
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.content-column .main{
+  width: calc(100% - 4rem);
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg);
+  border: var(--border);
+  border-radius: 1rem;
+}
+
+.content-row .main{
+  width: min(calc(100% - 2rem), 30rem);
+  text-align: center;
+  padding: 1rem;
+  background: var(--bg);
+  border: var(--border);
+  border-radius: 1rem;
+}
+
+table button{
+  width: 100%;
+  padding: .5rem;
+  border-radius: .5rem;
+  border: 1px solid var(--secondary);
+}
+
+.scroll-button{
+  opacity: .5;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  animation: blurIn 1000ms;
+}
+
+.scroll-button:hover{
+  opacity: 1;
+}
+
+.hidden{
+  display: none;
+}
+
+@keyframes blurIn {
+  0%{
+    scale: 0.5;
+    opacity: 0;
+    filter: blur(10px);
+  }
+  50%{
+    scale: 1;
+    opacity: 1;
+    filter: blur(0px);
+  }
+  100%{
+    scale: 1;
+    opacity: .5;
+    filter: blur(0px);
+  }
+}
