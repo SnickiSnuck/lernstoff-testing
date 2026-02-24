@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Compendium - Französisch-Vokabeln</title>
+  <title>Compendium</title>
   <link rel="stylesheet" href="../style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
   <nav>
     <ul>
       <li><a href="../">Start</a></li>
-      <li><a href="../french" class="nav-active">Französisch</a></li>
+      <li><a href="../french" class="nav-active" style="cursor: pointer;">Französisch</a></li>
       <li><a href="../info">Info</a></li>
     </ul>
   </nav>
@@ -31,11 +31,16 @@
   </div>
 
   <div class="main">
+    <h2>Testmodus</h2>
+    <p>Klicke auf <button style="padding: .2rem; border-radius: 0;" onclick="toggleCover(1)">Französisch</button> oder <button style="padding: .2rem; border-radius: 0;" onclick="toggleCover(2)">Deutsch</button>, um die Vokabeln auszublenden.</p>
+  </div>
+
+  <div class="main">
     <h2 id="unit01">Unité 1 - Voc. thématique</h2>
     <p>LB. S. 178-180</p><br>
     <table>
-            <th><button id="coverButton">Französisch</button></th>
-            <th><button>Deutsch</button></th>
+            <th><button onclick="toggleCover(1)">Französisch</button></th>
+            <th><button onclick="toggleCover(2)">Deutsch</button></th>
         <tr>
             <td>francophone</td>
             <td>französischsprachig</td>
@@ -132,8 +137,8 @@
     <p>LB. S. 180-181</p><br>
     <table>
         <tr>
-            <th>Französisch</th>
-            <th>Deutsch</th>
+            <th><button onclick="toggleCover(1)">Französisch</button></th>
+            <th><button onclick="toggleCover(2)">Deutsch</button></th>
         </tr>
         <tr>
             <td>découvrir qn/qc</td>
@@ -219,8 +224,8 @@
     <p>LB. S. 182</p><br>
     <table>
         <tr>
-            <th>Französisch</th>
-            <th>Deutsch</th>
+            <th><button onclick="toggleCover(1)">Französisch</button></th>
+            <th><button onclick="toggleCover(2)">Deutsch</button></th>
         </tr>
         <tr>
             <td>la tradition</td>
@@ -310,8 +315,8 @@
     <p>LB. S. 183-184</p><br>
     <table>
         <tr>
-            <th>Französisch</th>
-            <th>Deutsch</th>
+            <th><button onclick="toggleCover(1)">Französisch</button></th>
+            <th><button onclick="toggleCover(2)">Deutsch</button></th>
         </tr>
         <tr>
             <td>plusieurs</td>
@@ -405,8 +410,8 @@
     <p>LB. S. 184-185</p><br>
     <table>
         <tr>
-            <th>Französisch</th>
-            <th>Deutsch</th>
+            <th><button onclick="toggleCover(1)">Französisch</button></th>
+            <th><button onclick="toggleCover(2)">Deutsch</button></th>
         </tr>
         <tr>
             <td>le gladiateur</td>
@@ -484,8 +489,8 @@
     <p>LB. S. 185-186</p><br>
     <table>
         <tr>
-            <th>Französisch</th>
-            <th>Deutsch</th>
+            <th><button onclick="toggleCover(1)">Französisch</button></th>
+            <th><button onclick="toggleCover(2)">Deutsch</button></th>
         </tr>
         <tr>
             <td>le concours</td>
@@ -583,8 +588,8 @@
     <p>LB. S. 187-188</p><br>
     <table>
         <tr>
-            <th>Französisch</th>
-            <th>Deutsch</th>
+            <th><button onclick="toggleCover(1)">Französisch</button></th>
+            <th><button onclick="toggleCover(2)">Deutsch</button></th>
         </tr>
         <tr>
             <td>Vive ...</td>
@@ -678,27 +683,16 @@
   </div>
 </div>
 
-<button class="scroll-button" id="scrollButton">↑</button>
-
 <script>
-  const scrollButton = document.getElementById('scrollButton');
-
-  // Überwacht das Scroll-Event
-  window.addEventListener('scroll', () => {
-    // Wenn mehr als 200 Pixel nach unten gescrollt wurde
-    if (window.scrollY > 200) {
-      scrollButton.classList.remove('hidden');
-    } else {
-      scrollButton.classList.add('hidden');
-    }
-  });
-
-  // Optional: Beim Klick nach oben springen
-  scrollButton.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
+function toggleCover(colIndex) {
+    // Wir suchen alle td-Elemente, die an der Position colIndex in ihrer Zeile stehen
+    const cells = document.querySelectorAll(`tbody td:nth-child(${colIndex})`);
+    
+    cells.forEach(td => {
+        td.classList.toggle('covered');
+    });
+}
 </script>
-
 </body>
 </html>
 

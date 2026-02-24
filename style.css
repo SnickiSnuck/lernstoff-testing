@@ -25,8 +25,8 @@
 }
 
 h1,h2,h3{color: var(--header);}
-h1{font-size: 2.5rem;}
-p{color: var(--text);}
+h1{font-size: 3rem;} h2{font-size: 2rem;} h3{font-size: 1.5rem;} p{color: var(--text);}
+
 a{
   text-decoration: none;
   color: var(--primary);
@@ -36,9 +36,6 @@ a:hover{
   color: var(--secondary);
   text-decoration: underline;
 }
-
-a:active{opacity: .5;}
-
 
 body{
   display: flex;
@@ -56,12 +53,9 @@ button{
   border-radius: .8rem;
   border: 1px solid var(--secondary);
   cursor: pointer;
-  transition: all 150ms;
+  transition: all 150ms, scale 100ms,;
   box-shadow: 0px 1px 1px var(--tertiary) inset, 0 -1px 1px var(--tertiary) inset, 1px 0px 1px var(--tertiary) inset, -1px 0px 1px var(--tertiary) inset;
-}
-
-button:hover{
-  filter: brightness(1.2);
+  user-select: none;
 }
 
 ul {
@@ -83,6 +77,7 @@ nav{
   border-radius: 9999px;
   border: var(--border);
   box-shadow: var(--border-shadow), var(--shadow);
+  user-select: none;
 }
 
 nav ul{
@@ -139,29 +134,17 @@ table{
   user-select: none;
 }
 
-thead{
-  background: red;
-  border-radius: 1rem;
-  overflow: hidden;
-}
-
 th, td{
   transition: all 500ms;
   padding: .5rem;
 }
 
-tr:nth-child(even){
-  background: var(--bg);
+th{
+  padding: .5rem;
 }
 
-.content-row{
-  width: min(calc(100% - 2rem), 80rem);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1rem;
+tr:nth-child(even){
+  background: var(--bg);
 }
 
 .content-column{
@@ -172,9 +155,10 @@ tr:nth-child(even){
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding-bottom: 1rem;
 }
 
-.content-column .main{
+.main{
   width: calc(100% - 4rem);
   text-align: center;
   padding: 1rem;
@@ -183,13 +167,10 @@ tr:nth-child(even){
   border-radius: 1rem;
 }
 
-.content-row .main{
-  width: min(calc(100% - 2rem), 30rem);
-  text-align: center;
-  padding: 1rem;
-  background: var(--bg);
-  border: var(--border);
-  border-radius: 1rem;
+.button-container{
+  display: flex;
+  gap: .5rem;
+  justify-content: center;
 }
 
 table button{
@@ -199,28 +180,30 @@ table button{
   border: 1px solid var(--secondary);
 }
 
-.scroll-button{
-  opacity: .5;
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-  z-index: 1000;
-  animation: blurIn 1000ms;
+.covered{
+  scale: 1.2;
+  filter: blur(5px);
+  opacity: 0;
+  cursor: help;
 }
 
-.scroll-button:hover{
+.covered:hover{
   opacity: 1;
+  filter: blur(0px);
+  scale: 1;
 }
 
-.hidden{
-  display: none;
+@media (hover: hover){
+  button:hover{
+    filter: brightness(1.2);
+  }
 }
 
 @keyframes blurIn {
   0%{
     scale: 0.5;
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(5px);
   }
   50%{
     scale: 1;
